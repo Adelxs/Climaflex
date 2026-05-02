@@ -9,7 +9,7 @@ function Navbar() {
     <nav className={styles.nav}>
       <div className={styles.logo}>
         {/*<span className={styles.logoText}>CLIMAFLEX</span>*/}
-        <img className={styles.img} src="public/img/climaflex.jpeg" alt="" />
+        <img className={styles.img} src="/img/climaflex.jpeg" alt="" />
         <span className={styles.logoSub}>Refrigeración &amp; Climatización</span>
       </div>
       <div className={styles.links}>
