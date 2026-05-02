@@ -1,0 +1,89 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  position: relative;
+  background: rgba(13, 71, 161, 0.97);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  border-bottom: 2px solid var(--red);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.logoText {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--white);
+  line-height: 1;
+}
+
+.logoSub {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 1px;
+  margin-top: 4%;
+  margin-left: 10px;
+}
+
+.links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+ display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--yellow);
+}
+
+.cta {
+  background: var(--red);
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.cta:hover {
+  background: var(--red-light);
+}
+
+.img {
+  width: 9%;
+  height: 9%;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+}

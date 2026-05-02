@@ -1,0 +1,120 @@
+.section {
+  padding: 6rem 2rem;
+  background: var(--gray-light);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  color: var(--gray-dark);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  font-style: normal;
+}
+
+.title em {
+  color: var(--blue);
+  font-style: normal;
+}
+
+.desc {
+  font-size: 16px;
+  color: var(--gray);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 4px;
+  padding: 2rem 1.75rem;
+  border-top: 4px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.card.red  { border-top-color: var(--red); }
+.card.blue { border-top-color: var(--blue); }
+.card.orange { border-top-color: var(--orange); }
+.card.yellow { border-top-color: var(--yellow); }
+
+.icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 1.25rem;
+}
+
+.card.red    .icon { background: #FFEBEE; }
+.card.blue   .icon { background: #E3F2FD; }
+.card.orange .icon { background: #FBE9E7; }
+.card.yellow .icon { background: #FFFDE7; }
+
+.card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gray-dark);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.65;
+}
+
+.list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.list li {
+  font-size: 13px;
+  color: var(--gray);
+  padding: 4px 0 4px 16px;
+  position: relative;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-size: 16px;
+  line-height: 1.2;
+}
