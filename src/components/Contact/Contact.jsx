@@ -31,6 +31,8 @@ function Contact() {
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
     window.open(url, '_blank')
+
+    setForm({ nombre: '', telefono: '', email: '', comuna: '', servicio: '', mensaje: '' })
   }
 
   return (
