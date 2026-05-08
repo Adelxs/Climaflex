@@ -3,11 +3,11 @@ import styles from './Contact.module.css'
 
 const WHATSAPP_NUMBER = '56958510594' // ← reemplaza con el número real (sin +)
 
-const zones = ['Providencia','Santiago','Puente Alto','La Florida','San Bernardo','La Pintana','Peñalolen','Ñuñoa', 'Pirque', 'Buin', 'San Jose de Maipo']
+const zones = ['Providencia','Santiago','Puente Alto','La Florida','San Bernardo','La Pintana','Peñalolen','Ñuñoa', 'Pirque', 'Buin', 'San Jose de Maipo', 'San Joaquin']
 
 function Contact() {
   const [form, setForm] = useState({
-    nombre: '', telefono: '', email: '', servicio: '', mensaje: '',
+    nombre: '', telefono: '', email: '', comuna: '',  servicio: '', mensaje: '',
   })
 
   const handleChange = (e) => {
@@ -24,6 +24,7 @@ function Contact() {
       `*Solicitud de servicio - Climaflex*`,
       `Nombre: ${nombre}`,
       `Teléfono: ${telefono}`,
+      `Comuna: ${form.comuna}`,
       `Servicio: ${servicio}`,
       mensaje ? `Detalle: ${mensaje}` : '',
     ].filter(Boolean).join('\n')
@@ -88,6 +89,15 @@ function Contact() {
               <label>Correo electrónico</label>
               <input name="email" type="email" placeholder="tu@correo.com" value={form.email} onChange={handleChange} />
             </div>
+            <div className={styles.formGroup}>
+                  <label>Comuna</label>
+                  <input
+                    name="comuna"
+                    placeholder="Tu comuna..."
+                    value={form.comuna}
+                    onChange={handleChange}
+                  />
+                </div>
             <div className={styles.formGroup}>
               <label>Tipo de servicio</label>
               <select name="servicio" value={form.servicio} onChange={handleChange}>

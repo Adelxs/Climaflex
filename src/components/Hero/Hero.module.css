@@ -21,8 +21,8 @@
 .bgText {
   position: absolute;
   top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
   font-family: 'Bebas Neue', sans-serif;
+  transform: translate(-50%, -50%) skewX(-10deg);
   font-size: clamp(120px, 20vw, 260px);
   color: rgba(255, 255, 255, 0.04);
   letter-spacing: 20px;
