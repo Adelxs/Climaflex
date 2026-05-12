@@ -118,3 +118,303 @@
   font-size: 16px;
   line-height: 1.2;
 }
+
+.card {
+  cursor: pointer;
+}
+
+.verMas {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 0.5px;
+}
+
+/* MODAL */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal {
+  background: white;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.1);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 10;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.closeBtn:hover {
+  background: rgba(0,0,0,0.25);
+}
+
+.modalHeader {
+  padding: 2rem 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 6px 6px 0 0;
+}
+
+.modalHeader.red    { background: #FFEBEE; }
+.modalHeader.blue   { background: #E3F2FD; }
+.modalHeader.orange { background: #FBE9E7; }
+.modalHeader.yellow { background: #FFFDE7; }
+
+.modalIcon {
+  font-size: 40px;
+}
+
+.modalHeader h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gray-dark);
+  text-transform: uppercase;
+}
+
+.modalBody {
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modalIntro {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+.modalSection h4 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  margin-bottom: 0.75rem;
+}
+
+.modalList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modalList li {
+  font-size: 14px;
+  color: var(--gray);
+  padding-left: 16px;
+  position: relative;
+}
+
+.modalList li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.marcasList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.marcaTag {
+  background: var(--gray-light);
+  color: var(--gray-dark);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modalInfo {
+  background: var(--gray-light);
+  border-radius: 4px;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.modalInfo h5 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  margin-bottom: 4px;
+}
+
+.modalInfo p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+.modalCta {
+  display: block;
+  text-align: center;
+  background: var(--red);
+  color: white;
+  padding: 14px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.modalCta:hover {
+  background: var(--red-light);
+}
+
+/* SLIDER MARCAS */
+.sliderWrapper {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.sliderLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+}
+
+.sliderTrack {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.sliderTrack::before,
+.sliderTrack::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+}
+
+.sliderTrack::before {
+  left: 0;
+  background: linear-gradient(to right, #F0F8FF, transparent);
+}
+
+.sliderTrack::after {
+  right: 0;
+  background: linear-gradient(to left, #F0F8FF, transparent);
+}
+
+.sliderContent {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scrollMarcas 25s linear infinite;
+}
+
+.sliderContent:hover {
+  animation-play-state: paused;
+}
+
+.marcaItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 10px 24px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.marcaItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.marcaIcon {
+  font-size: 18px;
+}
+
+.marcaNombre {
+  
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--gray-dark);
+  text-transform: uppercase;
+  display: inline-block; 
+  transform: skewX(-10deg);
+}
+
+@keyframes scrollMarcas {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marcaLogo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: filter 0.2s, opacity 0.2s;
+}
+
+.marcaItem:hover .marcaLogo {
+  filter: grayscale(0%);
+  opacity: 1;
+}

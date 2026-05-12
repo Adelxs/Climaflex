@@ -5,6 +5,7 @@ import Gallery from './components/Gallery/Gallery'
 import WhyUs from './components/WhyUs/WhyUs'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
+import Carousel from './components/Carousel/Carousel'
 import './index.css'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <>
       <Navbar />
       <Hero />
+      <Carousel />
       <Services />
       <Gallery />
       <WhyUs />

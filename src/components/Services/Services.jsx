@@ -1,4 +1,5 @@
 import styles from './Services.module.css'
+import { useState } from 'react'
 
 const services = [
   {
@@ -13,6 +14,12 @@ const services = [
       'Cambio de resistencias y ventiladores',
       'Limpieza profunda del evaporador',
     ],
+    detalle: {
+      intro: 'Nuestro servicio de refrigeración cubre todo tipo de equipos domésticos y comerciales. Contamos con técnicos especializados y repuestos disponibles para la mayoría de las marcas del mercado.',
+      marcas: ['Samsung', 'LG', 'Mabe', 'Fensa', 'Whirlpool', 'Bosch'],
+      garantia: '3 meses en mano de obra y repuestos instalados.',
+      tiempo: 'Diagnóstico en el mismo día, reparación en 24 a 48 hrs según disponibilidad de repuestos.',
+    },
   },
   {
     color: 'blue',
@@ -26,6 +33,12 @@ const services = [
       'Reparación de fallas eléctricas',
       'Revisión del sistema de drenaje',
     ],
+    detalle: {
+      intro: 'Instalamos y reparamos todo tipo de sistemas de climatización, desde equipos split residenciales hasta sistemas de mayor capacidad para locales comerciales.',
+      marcas: ['Inverter', 'Midea', 'Carrier', 'Rheem', 'Daikin', 'Fujitsu'],
+      garantia: '6 meses en instalación y 3 meses en reparaciones.',
+      tiempo: 'Instalación coordinada según disponibilidad, reparaciones en 24 hrs.',
+    },
   },
   {
     color: 'orange',
@@ -39,6 +52,12 @@ const services = [
       'Control de temperatura y consumo',
       'Informe de estado del equipo',
     ],
+    detalle: {
+      intro: 'El mantenimiento preventivo es la mejor inversión para tus equipos. Evita fallas inesperadas, reduce el consumo eléctrico y alarga la vida útil de refrigeradores y aires acondicionados.',
+      marcas: ['Todas las marcas del mercado'],
+      garantia: 'Informe escrito del estado del equipo incluido en cada visita.',
+      tiempo: 'Visita programada según conveniencia del cliente.',
+    },
   },
   {
     color: 'yellow',
@@ -52,10 +71,34 @@ const services = [
       'Disponible fines de semana',
       'Presupuesto sin costo',
     ],
+    detalle: {
+      intro: 'Sabemos que una falla en el momento menos esperado puede ser crítica, especialmente en negocios. Por eso ofrecemos atención de urgencia con respuesta rápida los 7 días de la semana.',
+      marcas: ['Todas las marcas del mercado'],
+      garantia: 'Presupuesto sin costo antes de iniciar cualquier trabajo.',
+      tiempo: 'Respuesta en menos de 2 horas dentro de las comunas atendidas.',
+    },
   },
 ]
+const marcas = [
+  { nombre: 'Samsung', dominio: 'samsung.com'},
+  { nombre: 'LG', dominio: 'lg.com' },
+  { nombre: 'Mabe', dominio: 'mabe.com' },
+  { nombre: 'Fensa', dominio: 'fensa.cl' },
+  { nombre: 'Whirlpool', dominio: 'whirlpool.com' },
+  { nombre: 'Bosch', dominio: 'bosch.com' },
+  { nombre: 'Carrier', dominio: 'carrier.com' },
+  { nombre: 'Daikin', dominio: 'daikin.com' },
+  { nombre: 'Midea', dominio: 'midea.com' },
+  { nombre: 'Fujitsu', dominio: 'fujitsu.com' },
+  { nombre: 'Rheem', dominio: 'rheem.com' },
+  { nombre: 'Electrolux', dominio: 'electrolux.com' },
+]
+
+
 
 function Services() {
+  const [selected, setSelected] = useState(null)
+
   return (
     <section className={styles.section} id="servicios">
       <div className={styles.container}>
@@ -67,7 +110,11 @@ function Services() {
         </p>
         <div className={styles.grid}>
           {services.map((s) => (
-            <div key={s.title} className={`${styles.card} ${styles[s.color]}`}>
+            <div
+              key={s.title}
+              className={`${styles.card} ${styles[s.color]}`}
+              onClick={() => setSelected(s)}
+            >
               <div className={styles.icon}>{s.icon}</div>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
@@ -76,10 +123,91 @@ function Services() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+              <span className={styles.verMas}>Ver más detalles →</span>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selected && (
+        <div className={styles.overlay} onClick={() => setSelected(null)}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeBtn} onClick={() => setSelected(null)}>✕</button>
+            <div className={`${styles.modalHeader} ${styles[selected.color]}`}>
+              <span className={styles.modalIcon}>{selected.icon}</span>
+              <h3>{selected.title}</h3>
+            </div>
+            <div className={styles.modalBody}>
+              <p className={styles.modalIntro}>{selected.detalle.intro}</p>
+
+              <div className={styles.modalSection}>
+                <h4>¿Qué incluye?</h4>
+                <ul className={styles.modalList}>
+                  {selected.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={styles.modalSection}>
+                <h4>Marcas que atendemos</h4>
+                <div className={styles.marcasList}>
+                  {selected.detalle.marcas.map((m) => (
+                    <span key={m} className={styles.marcaTag}>{m}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className={styles.modalGrid}>
+                <div className={styles.modalInfo}>
+                  <span>🛡️</span>
+                  <div>
+                    <h5>Garantía</h5>
+                    <p>{selected.detalle.garantia}</p>
+                  </div>
+                </div>
+                <div className={styles.modalInfo}>
+                  <span>⏱️</span>
+                  <div>
+                    <h5>Tiempo de respuesta</h5>
+                    <p>{selected.detalle.tiempo}</p>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="#contacto"
+                className={styles.modalCta}
+                onClick={() => setSelected(null)}>
+              
+                Solicitar este servicio →
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Slider de marcas */}
+      <div className={styles.sliderWrapper}>
+        <p className={styles.sliderLabel}>Marcas que atendemos</p>
+        <div className={styles.sliderTrack}>
+          <div className={styles.sliderContent}>
+            {[...marcas, ...marcas].map((m, i) => (
+             <div key={i} className={styles.marcaItem}>
+              <img
+                  src={m.logo ? m.logo : `https://www.google.com/s2/favicons?domain=${m.dominio}&sz=128`}
+                  alt={m.nombre}
+                  className={styles.marcaLogo}
+                  onError={(e) => { e.target.style.display = 'none' }}
+                />
+              <span className={styles.marcaNombre}>{m.nombre}</span>
+            </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    
     </section>
   )
 }
